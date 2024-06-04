@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast App</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .ubuntu-sans-unique {
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: 900;
+            font-style: normal;
+            font-variation-settings: "wdth" 100;
+            color: #02324e;
+        }
+        body {
+            background-size: cover;
+            background-image: url("/images/clouds.jpg");
+        }
+        .forecast-item {
+            transition: transform 0.2s ease-in-out;
+            background-size: cover;
+            background-image: url("images/wallpaper2.jpg");
+        }
+        .forecast-item:hover {
+            transform: scale(1.05);
+        }
+        .weather-grid-container {
+            font-style: italic;
+            background-size: cover;
+            background-image: url("/images/wallpaper.jpg");
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold mb-4 text-center ubuntu-sans-unique">Weather Forecast</h1>
+        <div id="searchContainer" class="mb-4">
+            <form id="searchForm" class="flex flex-col sm:flex-row" aria-label="Search Form">
+                <label for="cityInput" class="text-lg font-semibold mb-2 sm:mb-0 mr-4">Enter City Name</label>
+                <input type="text" id="cityInput" placeholder="Eg.,Mathura,Delhi,Pune" class="border rounded-md px-4 py-2 mr-2 focus:outline-none focus:border-blue-500" aria-label="City Name">
+                <div>
+                    <button id="searchBtn" class="bg-purple-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md focus:outline-none focus:bg-blue-600" aria-label="Search by City">Search</button>
+                </div>
+                <div>
+                    <button id="locationBtn" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md focus:outline-none focus:bg-green-600 ml-2" aria-label="Get Current Location Forecast">Get Current Location Forecast</button>
+                </div>
+            </form>
+            <div id="recentCitiesContainer" class="mt-4 hidden">
+                <label for="recentCities" class="text-lg font-semibold mb-2 sm:mb-0 mr-4">Recently Searched Cities</label>
+                <select id="recentCities" class="border rounded-md px-4 py-2 mr-2 focus:outline-none focus:border-blue-500" aria-label="Recently Searched Cities">
+                    <!-- Options will be added dynamically here -->
+                </select>
+            </div>
+        </div>
+        <div id="errorContainer" class="bg-red-100 text-red-700 p-4 rounded mb-4 hidden" role="alert" aria-live="assertive">
+            <!-- Error messages will be dynamically added here -->
+        </div>
+        <div id="loadingContainer" class="hidden" role="status" aria-live="polite">
+            <p>Loading...</p>
+        </div>
+        <div id="currentWeatherContainer" class="weather-grid-container p-6 mb-8 border border-gray-300 bg-white rounded-lg shadow-md" aria-live="polite">
+            <p>Weather data shows here...</p>
+        </div>
+        <h2 class="text-2xl font-bold mb-4 text-center hidden" id="forecastHeading">5-Day Forecast</h2>
+        <div id="forecastContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4" aria-live="polite">
+            <!-- Forecast items will be dynamically added here -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
